@@ -1,0 +1,47 @@
+{
+  "name": "prettier-plugin-style-order",
+  "version": "0.1.0",
+  "description": "Prettier plugin which sorts related style property declarations",
+  "keywords": [
+    "prettier",
+    "plugin",
+    "style",
+    "css",
+    "order",
+    "group"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Nate Moore",
+    "email": "nate@natemoo.re",
+    "url": "https://natemoo.re/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natemoo-re/prettier-plugin-style-order.git"
+  },
+  "bugs": {
+    "url": "https://github.com/natemoo-re/prettier-plugin-style-order/issues"
+  },
+  "homepage": "https://github.com/natemoo-re/prettier-plugin-style-order",
+  "files": [
+    "src"
+  ],
+  "main": "src/index.js",
+  "directories": {
+    "src": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "dependencies": {
+    "postcss-sorting": "5.0.1"
+  },
+  "devDependencies": {
+    "prettier": "1.19.1"
+  },
+  "peerDependencies": {
+    "prettier": ">= 1.13"
+  }
+}
