@@ -14,10 +14,14 @@ for (const lang of languages) {
       if (parser.preprocess) {
         text = parser.preprocess(text, options)
       }
-      if (lang === 'css') {
-        return sorter(text);
+      switch (lang) {
+        case 'scss':
+          return sorter(text, { parser: 'postcss-scss' })
+        case 'less':
+          return sorter(text, { syntax: 'postcss-less' });
+        default:
+          return sorter(text)
       }
-      return sorter(text, { syntax: `postcss-${lang}` });
     },
   }
 }

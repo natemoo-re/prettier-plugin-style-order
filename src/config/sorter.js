@@ -4,7 +4,7 @@ const createConfig = require('./factory');
 
 module.exports = (value, opts = {}) => {
     return postcss({
-        syntax: opts.syntax,
+        ...opts,
         plugins: [sorting(createConfig())]
     }).process(value, { from: undefined }).css;
 }
