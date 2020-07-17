@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-style-order",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Prettier plugin which sorts related style property declarations",
   "keywords": [
     "prettier",
@@ -36,7 +36,8 @@
     "test": "node test"
   },
   "dependencies": {
-    "postcss-sorting": "5.0.1"
+    "postcss-sorting": "5.0.1",
+    "resolve-cwd": "^3.0.0"
   },
   "devDependencies": {
     "prettier": "1.19.1"

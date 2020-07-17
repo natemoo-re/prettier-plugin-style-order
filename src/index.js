@@ -1,9 +1,25 @@
-const prettier = require('prettier/parser-postcss');
+const prettier = require('prettier/parser-postcss')
 const sorter = require('./config/sorter')
+const resolveCwd = require('resolve-cwd')
 
 const { parsers } = prettier;
 
 const languages  = Object.keys(parsers);
+
+let warned = false;
+const requireSyntax = (lang) => {
+  let pkg;
+  try {
+    let path = resolveCwd(`postcss-${lang}`)
+    pkg = require(path)
+    if (pkg === undefined) throw new Error()
+  } catch (e) {
+    if (!warned) {
+      console.error(`You need to install "postcss-${lang}"`);
+    }
+  }
+  return pkg;
+}
 
 exports.parsers = {}
 for (const lang of languages) {
@@ -16,9 +32,9 @@ for (const lang of languages) {
       }
       switch (lang) {
         case 'scss':
-          return sorter(text, { parser: 'postcss-scss' })
+          return sorter(text, { syntax: requireSyntax(lang) })
         case 'less':
-          return sorter(text, { syntax: 'postcss-less' });
+          return sorter(text, { syntax: requireSyntax(lang) })
         default:
           return sorter(text)
       }

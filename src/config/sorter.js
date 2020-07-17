@@ -1,10 +1,9 @@
 const postcss = require('postcss')
-const sorting = require('postcss-sorting');
-const createConfig = require('./factory');
+const sorting = require('postcss-sorting')
+const createConfig = require('./factory')
 
 module.exports = (value, opts = {}) => {
-    return postcss({
-        ...opts,
-        plugins: [sorting(createConfig())]
-    }).process(value, { from: undefined }).css;
+  return postcss([
+    sorting(createConfig())
+  ]).process(value, { ...opts, from: undefined }).css
 }
