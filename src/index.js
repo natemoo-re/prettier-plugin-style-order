@@ -1,12 +1,12 @@
 const prettier = require('prettier/parser-postcss')
 const sorter = require('./config/sorter')
-const resolveCwd = require('resolve-cwd')
+const resolveCwd = require('resolve-cwd');
 
 const { parsers } = prettier;
 
 const languages  = Object.keys(parsers);
+const red = str => '\033[31m' + str + '\033[39m'
 
-let warned = false;
 const requireSyntax = (lang) => {
   let pkg;
   try {
@@ -14,9 +14,12 @@ const requireSyntax = (lang) => {
     pkg = require(path)
     if (pkg === undefined) throw new Error()
   } catch (e) {
-    if (!warned) {
-      console.error(`You need to install "postcss-${lang}"`);
-    }
+    console.error(
+      red(
+        `[prettier-plugin-style-order]: Please install "postcss-${lang}" as a dev dependency in order to format .${lang} files`,
+      ),
+    )
+    process.exit(0);
   }
   return pkg;
 }
