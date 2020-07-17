@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-style-order",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Prettier plugin which sorts related style property declarations",
   "keywords": [
     "prettier",
